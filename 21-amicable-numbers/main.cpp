@@ -37,17 +37,30 @@ using std::endl;
 int main() {
 
     map <int, int> sumOfProperDivisors ;
-    for( int i = 2 ; i < 10000 ; ++i) {
-        sumOfProperDivisors.insert( { i , getSumOfProperDivisors(i)});
+//    for( int i = 2 ; i < 10000 ; ++i) {
+//        sumOfProperDivisors.insert( { i , getSumOfProperDivisors(i)});
+//    }
+//
+//    vector <int> amicable;
+//    for ( const auto &[i, j] : sumOfProperDivisors) {
+//        if ( isAmicable(i, sumOfProperDivisors))
+//            amicable.push_back(i);
+//    }
+//    int x = 0;
+//
+//    cout << std::accumulate(std::begin(amicable), std::end(amicable), x);
+//
+    //////////////////// Optimized way
+    int sum = 0;
+    for ( int i = 2 ; i < 10000 ; ++i) {
+        auto j = getSumOfProperDivisors(i);
+        if ( j > i ) {
+            if (getSumOfProperDivisors(j) == i)
+                sum += i + j;
+        }
     }
+    cout << sum;
 
-    vector <int> amicable;
-    for ( const auto &[i, j] : sumOfProperDivisors) {
-        if ( isAmicable(i, sumOfProperDivisors))
-            amicable.push_back(i);
-    }
-    int x = 0;
 
-    cout << std::accumulate(std::begin(amicable), std::end(amicable), x);
     return 0;
 }
