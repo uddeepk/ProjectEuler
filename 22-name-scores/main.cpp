@@ -8,22 +8,22 @@ using std::map;
 #include <algorithm>
 
 std::string getInput();
-void getNameScoresMap (const std::string &s,  std::map <std::string, int> &m);
-int getScore (const std::string &s);
+void getNameScoresMap (const std::string &s,  std::map <std::string, long> &m);
+long getScore (const std::string &s);
 int main() {
 
     std::string myInput = getInput();
 
-    map <std::string, int> nameScores;
+    map <std::string, long> nameScores;
     getNameScoresMap(myInput, nameScores);
-    int counter = 1;
+    long counter = 1, sum = 0;
     for ( auto &[f, s] : nameScores) {
         nameScores[f] = counter * s;
         ++counter;
     }
 
     std::cout << std::accumulate(std::begin(nameScores), std::end(nameScores), 0,
-                     [] ( int value, const std::map < std::string, int>::value_type& p)
+                     [] ( long value , const std::map < std::string, long>::value_type& p)
                      {return value + p.second;}
                       );
     return 0;
@@ -37,7 +37,7 @@ std::string getInput() {
     return retStr;
 }
 
-void getNameScoresMap (const std::string &s,  std::map <std::string, int> &m) {
+void getNameScoresMap (const std::string &s,  std::map <std::string, long> &m) {
     const std::regex nameRegex ("([A-Z]+)");
     std::smatch namesMatch {};
     std::vector<std::string> testV;
@@ -45,14 +45,13 @@ void getNameScoresMap (const std::string &s,  std::map <std::string, int> &m) {
              it != std::sregex_iterator(); it++) {
         std::smatch namesMatch ;
         namesMatch = *it;
-//        std::cout << namesMatch.str(1) << " ";
         std::string name = namesMatch.str(1);
         m.insert({name, getScore(name)});
     }
 
 }
-int getScore(const std::string &s) {
-    int score = 0;
+long getScore(const std::string &s) {
+    long score = 0;
     for ( auto c : s ) {
         score += (c - 'A' + 1); // because a is 1
     }
