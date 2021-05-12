@@ -30,7 +30,7 @@ struct LargeInteger {
             int &n = _number[i];
 
             n += carryover;
-
+            carryover = 0;
             if( n >= 1000) {
                 carryover = n / 1000;
                 n %= 1000;
@@ -105,9 +105,9 @@ int main() {
     while (1) {;
         vec.push_back(vec[n-1] + vec[n-2]);
         ++n;
-        if (vec.back()._number[1] != 0)
+        if (vec.back()._number[2] != 0)
             break;
     }
-    std::cout << n << " " << vec.back().getValue();
+    std::cout << n ;//<< " " << vec.back().getValue();
     return 0;
 }
