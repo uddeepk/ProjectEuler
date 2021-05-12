@@ -1,6 +1,6 @@
 #include <iostream>
-//#include <cmath>
-//#include <numbers>
+#include <cmath>
+#include <numbers>
 #include <vector>
 #include <algorithm>
 #include <ranges>
@@ -108,6 +108,11 @@ int main() {
         if (vec.back()._number[333] != 0)
             break;
     }
-    std::cout << n ;//<< " " << vec.back().getValue();
+    std::cout << n <<"\n";//<< " " << vec.back().getValue();
+
+    //Using Binet's Formula
+
+    std::cout << std::round((999 + std::log10(std::sqrt(5))) / std::log10(std::numbers::phi)) << "\n";
+
     return 0;
 }
