@@ -93,19 +93,19 @@ vector<int> bigNumber(string s) {
 
 int main() {
 //    std::cout << std::pow(2, 1500) << std::endl;
-    LargeInteger l(1);
-    LargeInteger l1 ( "123456789000000001234567890");
-    l1.print();
-    std::cout << "\n" << l1.getValue() << "\n";
-    auto l2 = l + l1;
-    l2.print();
-    std::cout << "\n";
+//    LargeInteger l(1);
+//    LargeInteger l1 ( "123456789000000001234567890");
+//    l1.print();
+//    std::cout << "\n" << l1.getValue() << "\n";
+//    auto l2 = l + l1;
+//    l2.print();
+//    std::cout << "\n";
     std::vector <LargeInteger> vec {1, 1};
     int n = 2;
     while (1) {;
         vec.push_back(vec[n-1] + vec[n-2]);
         ++n;
-        if (vec.back()._number[2] != 0)
+        if (vec.back()._number[333] != 0)
             break;
     }
     std::cout << n ;//<< " " << vec.back().getValue();
